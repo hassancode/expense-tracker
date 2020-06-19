@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   textField: {
-    width: '25ch',
+    width: '20ch',
   },
   formControl: {
     margin: theme.spacing(1),
@@ -63,22 +63,24 @@ const AddTransaction = ({ handleAddTransaction }) => {
   }
 
   return (
-    <div className={classes.root}>
+    
+    <div >
       <Typography gutterBottom>Add Transaction</Typography>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className={classes.root}>
         <FormControl className={classes.formControl}>
-        <TextField id="standard-basic" label="Description" value={description} onChange={handleDescriptionChange} />
+        <TextField id="standard-basic" label="Description" value={description} onChange={handleDescriptionChange} className={classes.textField} />
         </FormControl>
         <FormControl className={classes.margin}>
           <InputLabel htmlFor="standard-adornment-amount">- expense, + income</InputLabel>
           <Input
             id="standard-adornment-amount"
+            className={classes.textField}
             onChange={handleAmountChange('amount')}
             value={amount}
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
         </FormControl>
-        <FormControl className={classes.formControl}>
+        <FormControl>
           <Fab size="small" color="secondary" aria-label="add" className={classes.margin} type='submit'>
             <AddIcon />
           </Fab>

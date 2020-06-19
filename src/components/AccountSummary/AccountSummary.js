@@ -5,10 +5,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { TransactionContext } from '../../contexts/TransactionContext'
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 120
+    minWidth: 150
   },
 
   content: {
@@ -29,16 +30,20 @@ export const AccountSummary = () => {
       <Grid item>
         <Card className={classes.root}>
           <CardContent className={classes.content}>
-            <Typography gutterBottom>Income</Typography>
-            <Typography>${totalIncome}</Typography>
+            <Typography variant='h6' gutterBottom>Income</Typography>
+            <Typography>
+            <Box color="success.main">${totalIncome}</Box>
+              </Typography>
           </CardContent>
         </Card>
       </Grid>
       <Grid item>
         <Card className={classes.root}>
           <CardContent className={classes.content}>
-            <Typography gutterBottom>Expense</Typography>
-            <Typography>${totalExpenses}</Typography>
+            <Typography variant='h6' color='success.main' gutterBottom>Expense</Typography>
+            <Typography>
+            <Box color="error.main">${totalExpenses}</Box>
+              </Typography>
           </CardContent>
         </Card>
       </Grid>

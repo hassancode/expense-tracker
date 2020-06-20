@@ -18,29 +18,30 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
-  },
   textField: {
     width: '20ch',
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+    minWidth: 110
+  }
 }));
 
-
+let error = false;
 
 const AddTransaction = ({ handleAddTransaction }) => {
-  const [amount, setAmount] = useState(0.00);
+  const [amount, setAmount] = useState();
   const [description, setDescription] = React.useState('');
   const classes = useStyles();
 
+
   const handleAmountChange = () => (event) => {
+    let value = +event.target.value;
+    if (isNaN(value)) {
+      error = true;   
+    } else {
+      error = false;
+    }
     setAmount(event.target.value);
   };
 
@@ -52,6 +53,7 @@ const AddTransaction = ({ handleAddTransaction }) => {
 
   function onSubmit(e) {
     e.preventDefault();
+    if(error) return;
     const lastTransaction = transactions.sort((a, b) => b.id - a.id)[0];
 
     const transaction = {
@@ -63,14 +65,14 @@ const AddTransaction = ({ handleAddTransaction }) => {
   }
 
   return (
-    
+
     <div >
-      <Typography gutterBottom>Add Transaction</Typography>
+      <Typography>Add Transaction</Typography>
       <form onSubmit={onSubmit} className={classes.root}>
         <FormControl className={classes.formControl}>
-        <TextField id="standard-basic" label="Description" value={description} onChange={handleDescriptionChange} className={classes.textField} />
+          <TextField id="standard-basic" label="Description" value={description} onChange={handleDescriptionChange} className={classes.textField} required />
         </FormControl>
-        <FormControl className={classes.margin}>
+        <FormControl className={classes.margin} error={error} required>
           <InputLabel htmlFor="standard-adornment-amount">- expense, + income</InputLabel>
           <Input
             id="standard-adornment-amount"

@@ -9,11 +9,21 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 150
+    minWidth: 120,
   },
 
   content: {
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: '10px !important'
+  },
+
+  income: {
+    color: 'rgba(76, 175, 80)'
+    // rgb(76, 175, 80);
+  },
+
+  expense: {
+    color: 'rgba(244, 67, 54)'
   }
 });
 
@@ -29,10 +39,10 @@ export const AccountSummary = () => {
     <Grid container spacing={2} justify="center">
       <Grid item>
         <Card className={classes.root}>
-          <CardContent className={classes.content}>
+        <CardContent className={classes.content}>
             <Typography variant='h6' gutterBottom>Income</Typography>
-            <Typography>
-            <Box color="success.main">${totalIncome}</Box>
+            <Typography className={classes.income}>
+            ${totalIncome}
               </Typography>
           </CardContent>
         </Card>
@@ -40,9 +50,9 @@ export const AccountSummary = () => {
       <Grid item>
         <Card className={classes.root}>
           <CardContent className={classes.content}>
-            <Typography variant='h6' color='success.main' gutterBottom>Expense</Typography>
-            <Typography>
-            <Box color="error.main">${totalExpenses}</Box>
+            <Typography variant='h6' gutterBottom>Expense</Typography>
+            <Typography className={classes.expense}>
+            ${totalExpenses}
               </Typography>
           </CardContent>
         </Card>

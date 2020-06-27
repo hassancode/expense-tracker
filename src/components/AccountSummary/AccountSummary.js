@@ -32,8 +32,8 @@ export const AccountSummary = () => {
   const amounts = transactions.map(t => t.amount);
   const incomes = amounts.filter(a => a > 0);
   const expenses = amounts.filter(a => a < 0);
-  const totalIncome = incomes.reduce((total, income) => (total += income), 0).toFixed(2);
-  const totalExpenses = (expenses.reduce((total, expense) => (total += expense), 0) * -1).toFixed(2);
+  const totalIncome = incomes.reduce((total, income) => (total += income), 0);
+  const totalExpenses = (expenses.reduce((total, expense) => (total += expense), 0) * -1).toLocaleString('en', {maximumFractionDigits:2});
   return (
     <Grid container spacing={2} justify="center">
       <Grid item>

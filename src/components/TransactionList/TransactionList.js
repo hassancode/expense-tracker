@@ -16,6 +16,15 @@ export const TransactionList = () => {
         { title: 'Description', field: 'description' },
         { title: 'Amount', field: 'amount' }
     ];
+    const transformedData = transactions.map(t=>{
+        return {
+        amount: t.amount.toLocaleString('en', {maximumFractionDigits:2}),
+        id: t.id,
+        description: t.description
+        }
+    })
+
+    console.log( transformedData);
    
     const classes = useStyles();
 
@@ -26,7 +35,7 @@ export const TransactionList = () => {
             <MaterialTable
             title=''
                 columns={columns}
-                data={transactions}
+                data={transformedData}
                 editable={{
                     onRowDelete: (oldData) =>
                         new Promise((resolve, reject) => {

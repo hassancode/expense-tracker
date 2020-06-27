@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 let error = false;
 
-const AddTransaction = ({ handleAddTransaction }) => {
-  const [amount, setAmount] = useState();
+const AddTransaction = () => {
+  const [amount, setAmount] = useState(0.0);
   const [description, setDescription] = React.useState('');
   const classes = useStyles();
 
@@ -65,6 +65,8 @@ const AddTransaction = ({ handleAddTransaction }) => {
       amount: +amount
     };
     addTransaction(transaction);
+    setDescription('');
+    setAmount(0.0);
   }
 
   return (

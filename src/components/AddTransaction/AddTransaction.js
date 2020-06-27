@@ -57,7 +57,7 @@ const AddTransaction = () => {
   function onSubmit(e) {
     e.preventDefault();
     if(error) return;
-    const newId = transactions ? (transactions.sort((a, b) => b.id - a.id)[0].id + 1): 1;
+    const newId = transactions.length > 0 ? (transactions.sort((a, b) => b.id - a.id)[0].id + 1): 1;
 
     const transaction = {
       id: newId,

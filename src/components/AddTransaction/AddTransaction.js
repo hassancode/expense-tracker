@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   textField: {
-    width: '29ch',
+    width: '22ch',
   },
   amountField: {
     width: '15ch'

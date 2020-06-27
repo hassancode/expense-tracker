@@ -8,12 +8,12 @@ import { TransactionContext } from '../../contexts/TransactionContext'
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 120,
+    minWidth: 130,
   },
 
   content: {
     textAlign: 'center',
-    padding: '10px !important'
+    padding: '15px !important'
   },
 
   income: {

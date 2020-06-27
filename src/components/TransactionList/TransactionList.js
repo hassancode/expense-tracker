@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import MaterialTable from 'material-table';
 import { TransactionContext } from '../../contexts/TransactionContext';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
     container: {
@@ -21,8 +22,9 @@ export const TransactionList = () => {
     return (
         
         <div className={classes.container}>
+            <Typography variant="h6" gutterBottom>Transaction List</Typography>
             <MaterialTable
-                title="Transactions"
+            title=''
                 columns={columns}
                 data={transactions}
                 editable={{
@@ -39,7 +41,8 @@ export const TransactionList = () => {
                     headerStyle: {
                         backgroundColor: '#01579b',
                         color: '#FFF'
-                    }
+                    },
+                    emptyRowsWhenPaging: false
                 }}
             >
             </MaterialTable>
